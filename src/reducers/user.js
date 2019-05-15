@@ -6,18 +6,18 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGOUT_SUCCESS,
-  USER_SUCCESS,
-  USER_FAIL
+  USER_AUTHENTICATE_SUCCESS,
+  USER_AUTHENTICATE_FAIL
 } from "../constants/User";
 
 var initialState = {};
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case USER_SUCCESS:
+    case USER_AUTHENTICATE_SUCCESS:
       state = action.payload;
       return state;
 
-    case USER_FAIL:
+    case USER_AUTHENTICATE_FAIL:
       state = action.payload;
       return state;
 

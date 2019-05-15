@@ -12,7 +12,7 @@ import Main from "./containers/main";
 import Login from "./containers/login";
 import Register from "./containers/register";
 import NotFound from "./components/NotFound";
-import config from "../config/app.config";
+import config from "./config/app.config";
 import { ApolloProvider } from "react-apollo";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloClient } from "apollo-client";

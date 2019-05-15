@@ -1,7 +1,5 @@
 import { client } from "../index";
 import { gql } from "apollo-boost";
-import axios from "axios";
-import config from "../config/app.config";
 
 export const RegisterUserApi = async user => {
   const res = await client.mutate({
@@ -23,7 +21,9 @@ export const LoginUserApi = async user => {
   const res = await client.query({
     query: gql`
     {
-      authUser(input: { name: "${user.name}", password: "${user.pass}" }) {
+      authorisationUser(input: { name: "${user.name}", password: "${
+      user.pass
+    }" }) {
         id
         name
         photo
@@ -31,20 +31,32 @@ export const LoginUserApi = async user => {
     }
   `
   });
-  return res.data.authUser;
+  return res.data.authorisationUser;
 };
 
 export const userSessionApi = async () => {
-  const res = await axios.get(config.serverDomain + `/session/user`, {
-    withCredentials: true
+  const res = await client.query({
+    query: gql`
+      {
+        authenticateUser {
+          id
+          name
+          photo
+        }
+      }
+    `,
+    fetchPolicy: "no-cache"
   });
-  let User = null;
-  if (res.data) User = JSON.parse(res.data);
-  return User;
+  console.log(res.data.authenticateUser);
+  return res.data.authenticateUser;
 };
 
 export const logoutSessionUserApi = async () => {
-  await axios.get(config.serverDomain + `/session/logout`, {
-    withCredentials: true
+  await client.mutate({
+    mutation: gql`
+      mutation {
+        logoutUser
+      }
+    `
   });
 };

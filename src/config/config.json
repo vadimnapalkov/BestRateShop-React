@@ -1,5 +1,5 @@
 {
   "env": "development",
-  "domain":"http://localhost:3000" ,
+  "domain":"http://locadlhost:3000" ,
   "serverDomain": "http://localhost:3001"
 }

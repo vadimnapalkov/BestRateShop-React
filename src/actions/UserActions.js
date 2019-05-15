@@ -6,8 +6,8 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGOUT_SUCCESS,
-  USER_SUCCESS,
-  USER_FAIL
+  USER_AUTHENTICATE_SUCCESS,
+  USER_AUTHENTICATE_FAIL
 } from "../constants/User";
 import {
   RegisterUserApi,
@@ -70,12 +70,12 @@ export const userSession = () => async dispatch => {
   let User = await userSessionApi();
   if (User) {
     dispatch({
-      type: USER_SUCCESS,
+      type: USER_AUTHENTICATE_SUCCESS,
       payload: User
     });
   } else {
     dispatch({
-      type: USER_FAIL,
+      type: USER_AUTHENTICATE_FAIL,
       payload: {}
     });
   }
