@@ -1,16 +1,15 @@
 import "./style.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { syncHistoryWithStore } from "react-router-redux";
-import { Router, Route, browserHistory } from "react-router";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import reducers from "./reducers";
-import Main from "./containers/main";
-import Login from "./containers/login";
-import Register from "./containers/register";
+import App from "./containers/App";
 import NotFound from "./components/NotFound";
 import config from "./config/app.config";
 import { ApolloProvider } from "react-apollo";
@@ -31,17 +30,18 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-const history = syncHistoryWithStore(browserHistory, store);
+// const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Provider store={store}>
-      <Router history={history}>
-        <Route path="/" component={Main} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="*" component={NotFound} />
-      </Router>
+      <BrowserRouter>
+        <Switch>
+          <Redirect exact from="/" to="/home" />
+          <Route path="/home" component={App} />
+          <Route component={NotFound} />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   </ApolloProvider>,
   document.getElementById("root")

@@ -1,157 +1,164 @@
-html {
-  height: 98%;
-  width: 99%;
+/* sign in FORM */
+#logreg-forms {
+  width: 412px;
+  margin: 10vh auto;
+  background-color: #f3f3f3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-body {
-  height: 100%;
+#logreg-forms form {
   width: 100%;
+  max-width: 410px;
+  padding: 15px;
+  margin: auto;
 }
-#root {
-  height: 100%;
-  width: 100%;
-}
-.body-login {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-.menu {
-  position: absolute;
-  height: 54px;
-  top: 15px;
-  right: 20px;
-  font-size: 18px;
-  color: #888;
-}
-.menu span {
+#logreg-forms .form-control {
   position: relative;
-}
-.menu img {
-  margin-right: 10px;
-  position: absolute;
-  left: -67px;
-}
-.menu a {
-  text-decoration: none;
-  margin-left: 13px;
-  color: black;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
   font-size: 16px;
 }
-.vkLogin {
-  position: absolute;
-  top: 64px;
-  right: 25px;
+#logreg-forms .form-control:focus {
+  z-index: 2;
 }
-.vkLogin p {
+#logreg-forms .form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+#logreg-forms .form-signin input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#logreg-forms .social-login {
+  width: 390px;
+  margin: 0 auto;
+  margin-bottom: 14px;
+}
+#logreg-forms .social-btn {
+  font-weight: 100;
+  color: white;
+  width: 190px;
+  font-size: 0.9rem;
+}
+.link-button {
+  display: block;
+  padding-top: 10px;
+  color: lightseagreen;
+  border: 0;
+  background: transparent;
+}
+.link-button:hover {
+  text-decoration: underline;
+}
+
+#logreg-forms a {
+  display: block;
+  padding-top: 10px;
+  color: lightseagreen;
+}
+
+#logreg-form .lines {
+  width: 200px;
+  border: 1px solid red;
+}
+
+#logreg-forms button[type="submit"] {
+  margin-top: 10px;
+}
+
+#logreg-forms .vkontakte-btn {
   float: left;
-  font-size: 20px;
-  margin-right: 7px;
-  margin-top: 7px;
+  background-color: #4c75a3;
+  margin-right: 4px;
+  margin-left: -2px;
 }
-.Vk {
-  width: 38px;
+
+#logreg-forms .google-btn {
+  background-color: #df4b3b;
 }
-.form-login {
-  position: relative;
-  height: 400px;
-  width: 425px;
-  -ms-flex-item-align: center;
-  -ms-grid-row-align: center;
-  align-self: center;
-  border-radius: 20px;
-  border: 1px solid #6393eacf;
-  box-shadow: 0 0 13px #88a7ffde;
+
+#logreg-forms .form-signup input {
+  margin-bottom: 2px;
 }
-.form-login__headline {
-  width: 61%;
-  position: relative;
-  top: 0%;
-  left: 21%;
-  text-align: center;
-  font-size: 38px;
-  font-style: italic;
-  font-family: "";
-  color: #000000c2;
+
+.navbar-brand {
+  margin: 4px !important;
+  padding: 3px !important;
+  color: #fff !important;
+  font-size: 2em !important;
+  font-weight: bold !important;
 }
-.form-login__hint {
-  position: relative;
-  left: 5%;
-  width: 90%;
-  text-align: center;
-  font-size: 17px;
+
+.navbar-toggle {
+  margin-top: 20px !important;
 }
-.form-login__input {
-  position: relative;
-  left: 7%;
-  width: 86%;
-  height: 9%;
-  border-radius: 6px;
-  border: 1px solid #0000003d;
-  margin-top: 13px;
-  font-size: 17px;
+.dropdown-menu {
+  background: #fff !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  position: static;
+  float: none;
 }
-.form-login__submit {
-  position: relative;
-  left: 31%;
-  width: 40%;
-  height: 9%;
-  border-radius: 6px;
-  border: 0px solid #0000003d;
-  margin-top: 13px;
-  font-size: 17px;
-  background-color: #00b8ffbf;
-  box-shadow: 0 0 5px;
+.dropdown-menu img {
+  width: 100px;
 }
-.form-login__error {
-  position: relative;
-  margin-top: 0px;
-  margin-bottom: 9px;
-  left: 5%;
-  width: 90%;
-  text-align: center;
-  font-size: 19px;
-  color: red;
+.navbar-login {
+  width: 350px;
+  padding: 10px;
+  padding-bottom: 0px;
 }
-.form-login__footer {
-  position: absolute;
-  top: 82%;
+
+.navbar-login-session {
+  padding: 10px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+.NotFound {
   width: 100%;
-  height: 72px;
-  border-top: 1px solid #00000029;
+  height: 100%;
+  text-align: center;
+  font-size: 40px;
 }
-.oauth {
-  position: relative;
-  top: 18%;
-  left: 5%;
-  height: 80%;
-  width: 90%;
+#logreg-forms .modal-content {
+  border: 0px;
+  background-color: #f3f3f3;
 }
-.oauth__haedline {
-  position: relative;
-  top: -13px;
-  font-size: 19px;
-  float: left;
-}
-.oauth__link {
-  float: left;
-}
-.oauth__image {
-  width: 33px;
-  margin-left: 6px;
-}
-.form-login__register {
-  position: absolute;
-  right: 4%;
-  top: 4%;
-  color: #0027ff;
-  font-size: 18px;
-  text-decoration: none;
-}
-@media all and (max-width: 500px) {
-  .form-login {
-    height: 400px;
-    width: 293px;
+
+/* Mobile */
+
+@media screen and (max-width: 500px) {
+  #logreg-forms {
+    width: 300px;
+  }
+  .navbar-login {
+    width: 284px;
+  }
+
+  #logreg-forms .social-login {
+    width: 200px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  #logreg-forms .social-btn {
+    font-size: 1.3rem;
+    font-weight: 100;
+    color: white;
+    width: 200px;
+    height: 56px;
+  }
+  #logreg-forms .social-btn:nth-child(1) {
+    margin-bottom: 5px;
+  }
+  #logreg-forms .social-btn span {
+    display: none;
+  }
+  #logreg-forms .vkontakte-btn:after {
+    content: "Vkontakte";
+  }
+
+  #logreg-forms .google-btn:after {
+    content: "Google+";
   }
 }

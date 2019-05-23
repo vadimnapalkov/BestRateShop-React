@@ -10,7 +10,7 @@ import {
   USER_AUTHENTICATE_FAIL
 } from "../constants/User";
 
-var initialState = {};
+const initialState = {};
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_AUTHENTICATE_SUCCESS:
@@ -19,27 +19,35 @@ export const userReducer = (state = initialState, action) => {
 
     case USER_AUTHENTICATE_FAIL:
       state = action.payload;
-      return state;
+      return { ...state, error: "" };
 
     case LOGIN_REQUEST:
-      return { ...state, error: "" };
+      return { ...state, errorLogin: "" };
 
     case LOGIN_SUCCESS:
       state = action.payload;
       return state;
 
     case LOGIN_FAIL:
-      return { ...state, error: action.payload.message };
+      return {
+        ...state,
+        errorLogin: action.payload.message,
+        errorRegister: ""
+      };
 
     case REGISTER_REQUEST:
-      return { ...state, error: "" };
+      return { ...state, errorRegister: "" };
 
     case REGISTER_SUCCESS:
       state = action.payload;
       return state;
 
     case REGISTER_FAIL:
-      return { ...state, error: action.payload.message };
+      return {
+        ...state,
+        errorRegister: action.payload.message,
+        errorLogin: ""
+      };
 
     case LOGOUT_SUCCESS:
       state = action.payload;

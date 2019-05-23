@@ -3,12 +3,23 @@ import { gql } from "apollo-boost";
 
 export const RegisterUserApi = async user => {
   const res = await client.mutate({
-    variables: { name: user.name, password: user.pass },
+    variables: {
+      full_name: user.full_name,
+      email: user.email,
+      password: user.pass
+    },
     mutation: gql`
-      mutation registrationUser($name: String!, $password: String!) {
-        registrationUser(input: { name: $name, password: $password }) {
+      mutation registrationUser(
+        $full_name: String!
+        $email: String!
+        $password: String!
+      ) {
+        registrationUser(
+          input: { full_name: $full_name, email: $email, password: $password }
+        ) {
           id
-          name
+          full_name
+          email
           photo
         }
       }
@@ -21,11 +32,12 @@ export const LoginUserApi = async user => {
   const res = await client.query({
     query: gql`
     {
-      authorisationUser(input: { name: "${user.name}", password: "${
+      authorisationUser(input: { email: "${user.email}", password: "${
       user.pass
     }" }) {
         id
-        name
+        full_name
+        email
         photo
       }
     }
@@ -38,17 +50,17 @@ export const userSessionApi = async () => {
   const res = await client.query({
     query: gql`
       {
-        authenticateUser {
+        authenticationUser {
           id
-          name
+          full_name
+          email
           photo
         }
       }
     `,
     fetchPolicy: "no-cache"
   });
-  console.log(res.data.authenticateUser);
-  return res.data.authenticateUser;
+  return res.data.authenticationUser;
 };
 
 export const logoutSessionUserApi = async () => {

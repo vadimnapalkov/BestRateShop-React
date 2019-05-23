@@ -20,9 +20,6 @@ export const RegisterUser = user => async dispatch => {
   dispatch({ type: REGISTER_REQUEST });
 
   const User = await RegisterUserApi(user);
-  localStorage.removeItem("User_BestRateShop");
-  let localUser = JSON.stringify(User);
-  localStorage.setItem("User_BestRateShop", localUser);
   if (User) {
     dispatch({
       type: REGISTER_SUCCESS,
@@ -41,9 +38,6 @@ export const LoginUser = user => async dispatch => {
   dispatch({ type: LOGIN_REQUEST });
 
   const User = await LoginUserApi(user);
-  localStorage.removeItem("User_BestRateShop");
-  let localUser = JSON.stringify(User);
-  localStorage.setItem("User_BestRateShop", localUser);
   if (User) {
     dispatch({
       type: LOGIN_SUCCESS,
