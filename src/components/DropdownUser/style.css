@@ -1,0 +1,26 @@
+.dropdown-menu {
+  background: #fff !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  position: static;
+  float: none;
+}
+.dropdown-menu img {
+  width: 100px;
+}
+.navbar-login {
+  width: 350px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.navbar-login-session {
+  padding: 10px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar-login {
+    width: 284px;
+  }
+}
