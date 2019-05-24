@@ -28,7 +28,6 @@ export const RegisterUser = user => async dispatch => {
   } else {
     dispatch({
       type: REGISTER_FAIL,
-      error: true,
       payload: new Error("Username already taken!")
     });
   }
@@ -46,7 +45,6 @@ export const LoginUser = user => async dispatch => {
   } else {
     dispatch({
       type: LOGIN_FAIL,
-      error: true,
       payload: new Error("Sorry! Invalid credentials")
     });
   }

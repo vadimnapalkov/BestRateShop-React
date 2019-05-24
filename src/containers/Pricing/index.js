@@ -1,25 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
 class Pricing extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <h1>Pricing</h1>
-      </div>
+      </Fragment>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
-};
+const mapStateToProps = state => ({ user: state.user });
 
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Pricing);
+export default connect(mapStateToProps)(Pricing);

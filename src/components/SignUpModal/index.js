@@ -1,30 +1,26 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import config from "../../config/app.config";
 const linkToOAuthVk = config.serverDomain + "/auth/vkontakte";
 
-class Register extends Component {
+class SignUpModal extends Component {
   state = {
-    full_name: "",
+    fullName: "",
     email: "",
     pass: "",
     repeatPass: "",
     validPass: true
   };
-  onRegister = e => {
+  handleRegister = e => {
     e.preventDefault();
-    const { full_name, email, pass } = this.state;
-    this.props.RegisterUser({
-      full_name: full_name,
-      email: email,
-      pass: pass
-    });
+    const { fullName, email, pass } = this.state;
+    this.props.onRegisterUser({ fullName, email, pass });
   };
-  onShowLogin = () => {
+  handleShowLogin = () => {
     this.props.onHide();
     this.props.onLogin();
   };
-  onOAuthVK = () => {
+  handleOAuthVK = () => {
     window.location.href = linkToOAuthVk;
   };
   handleChange = e => {
@@ -49,23 +45,18 @@ class Register extends Component {
     return pass === repeatPass;
   };
   validate = () => {
-    const { full_name, email, pass } = this.state;
-    if (
-      full_name.trim() &&
-      email.trim() &&
-      pass.trim() &&
-      this.validatePassword()
-    ) {
-      return true;
-    }
-    return false;
+    const { fullName, email, pass } = this.state;
+    return (
+      fullName.trim() && email.trim() && pass.trim() && this.validatePassword()
+    );
   };
   render() {
-    const { full_name, email, pass, repeatPass, validPass } = this.state;
+    const { fullName, email, pass, repeatPass, validPass } = this.state;
+    const { onHide, user } = this.props;
     return (
-      <React.Fragment>
-        <form className="form-signup" onSubmit={this.onRegister}>
-          <button type="reset" className="close" onClick={this.props.onHide}>
+      <Fragment>
+        <form className="form-signup" onSubmit={this.handleRegister}>
+          <button type="reset" className="close" onClick={onHide}>
             <span aria-hidden="true">&times;</span>
           </button>
           <h1
@@ -78,7 +69,7 @@ class Register extends Component {
             <button
               className="btn vkontakte-btn social-btn"
               type="button"
-              onClick={this.onOAuthVK}
+              onClick={this.handleOAuthVK}
             >
               <span>
                 <i className="fab fa-vk" /> Sign in with Vkontake
@@ -91,25 +82,25 @@ class Register extends Component {
             </button>
           </div>
           <p style={{ textAlign: "center" }}>OR</p>
-          {this.props.user.errorRegister && (
+          {user.errorRegister && (
             <div
               className="alert alert-danger"
               style={{ textAlign: "center" }}
               role="alert"
             >
-              {this.props.user.errorRegister}
+              {user.errorRegister}
             </div>
           )}
 
           <input
             type="text"
-            id="full_name"
+            id="fullName"
             className="form-control"
             placeholder="Full name"
             required=""
             autoFocus=""
             onChange={this.handleChange}
-            value={full_name}
+            value={fullName}
           />
           <input
             type="email"
@@ -153,13 +144,13 @@ class Register extends Component {
           >
             <i className="fas fa-user-plus" /> Sign Up
           </button>
-          <button onClick={this.onShowLogin} className="link-button">
+          <button onClick={this.handleShowLogin} className="link-button">
             <i className="fas fa-angle-left" /> Login
           </button>
         </form>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
 
-export default withRouter(Register);
+export default withRouter(SignUpModal);

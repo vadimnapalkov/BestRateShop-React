@@ -1,43 +1,43 @@
 /* sign in FORM */
-#logreg-forms {
+.logreg-forms {
   width: 412px;
   margin: 10vh auto;
   background-color: #f3f3f3;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-#logreg-forms form {
+.logreg-forms form {
   width: 100%;
   max-width: 410px;
   padding: 15px;
   margin: auto;
 }
-#logreg-forms .form-control {
+.logreg-forms .form-control {
   position: relative;
   box-sizing: border-box;
   height: auto;
   padding: 10px;
   font-size: 16px;
 }
-#logreg-forms .form-control:focus {
+.logreg-forms .form-control:focus {
   z-index: 2;
 }
-#logreg-forms .form-signin input[type="email"] {
+.logreg-forms .form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-#logreg-forms .form-signin input[type="password"] {
+.logreg-forms .form-signin input[type="password"] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-#logreg-forms .social-login {
+.logreg-forms .social-login {
   width: 390px;
   margin: 0 auto;
   margin-bottom: 14px;
 }
-#logreg-forms .social-btn {
+.logreg-forms .social-btn {
   font-weight: 100;
   color: white;
   width: 190px;
@@ -54,111 +54,72 @@
   text-decoration: underline;
 }
 
-#logreg-forms a {
+.logreg-forms a {
   display: block;
   padding-top: 10px;
   color: lightseagreen;
 }
 
-#logreg-form .lines {
+.logreg-forms .lines {
   width: 200px;
   border: 1px solid red;
 }
 
-#logreg-forms button[type="submit"] {
+.logreg-forms button[type="submit"] {
   margin-top: 10px;
 }
 
-#logreg-forms .vkontakte-btn {
+.logreg-forms .vkontakte-btn {
   float: left;
   background-color: #4c75a3;
   margin-right: 4px;
   margin-left: -2px;
 }
 
-#logreg-forms .google-btn {
+.logreg-forms .google-btn {
   background-color: #df4b3b;
 }
 
-#logreg-forms .form-signup input {
+.logreg-forms .form-signup input {
   margin-bottom: 2px;
 }
-
-.navbar-brand {
-  margin: 4px !important;
-  padding: 3px !important;
-  color: #fff !important;
-  font-size: 2em !important;
-  font-weight: bold !important;
-}
-
-.navbar-toggle {
-  margin-top: 20px !important;
-}
-.dropdown-menu {
-  background: #fff !important;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  position: static;
-  float: none;
-}
-.dropdown-menu img {
-  width: 100px;
-}
-.navbar-login {
-  width: 350px;
-  padding: 10px;
-  padding-bottom: 0px;
-}
-
-.navbar-login-session {
-  padding: 10px;
-  padding-bottom: 0px;
-  padding-top: 0px;
-}
-.NotFound {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  font-size: 40px;
-}
-#logreg-forms .modal-content {
+.logreg-forms .modal-content {
   border: 0px;
   background-color: #f3f3f3;
+}
+.modal.fade .modal-dialog {
+  width: 412px;
 }
 
 /* Mobile */
 
 @media screen and (max-width: 500px) {
-  #logreg-forms {
+  .modal.fade .modal-dialog {
     width: 300px;
   }
-  .navbar-login {
-    width: 284px;
-  }
-
-  #logreg-forms .social-login {
+  .logreg-forms .social-login {
     width: 200px;
     margin: 0 auto;
     margin-bottom: 10px;
   }
-  #logreg-forms .social-btn {
+  .logreg-forms .social-btn {
     font-size: 1.3rem;
     font-weight: 100;
     color: white;
     width: 200px;
     height: 56px;
   }
-  #logreg-forms .social-btn:nth-child(1) {
+  .logreg-forms .social-btn:nth-child(1) {
     margin-bottom: 5px;
   }
-  #logreg-forms .social-btn span {
+  .logreg-forms .social-btn span {
     display: none;
   }
-  #logreg-forms .vkontakte-btn:after {
+  .logreg-forms .vkontakte-btn:after {
     content: "Vkontakte";
   }
 
-  #logreg-forms .google-btn:after {
+  .logreg-forms .google-btn:after {
     content: "Google+";
   }
 }

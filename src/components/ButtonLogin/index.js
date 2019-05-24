@@ -4,56 +4,49 @@ import LoginModal from "../LoginModal";
 import SignUpModal from "../SignUpModal";
 
 class ButtonLogin extends Component {
-  constructor(props, context) {
-    super(props, context);
+  state = {
+    showModalLogin: false,
+    showModalSignup: false
+  };
 
-    this.LoginShow = this.LoginShow.bind(this);
-    this.LoginClose = this.LoginClose.bind(this);
-    this.SignUpShow = this.SignUpShow.bind(this);
-    this.SignUpClose = this.SignUpClose.bind(this);
-
-    this.state = {
-      showModalLogin: false,
-      showModalSignup: false
-    };
-  }
-
-  LoginClose() {
+  handleLoginClose = () => {
     this.setState({ showModalLogin: false });
-  }
+  };
 
-  LoginShow() {
+  handleLoginShow = () => {
     this.setState({ showModalLogin: true });
-  }
-  SignUpShow() {
+  };
+  handleSignUpShow = () => {
     this.setState({ showModalSignup: true });
-  }
+  };
 
-  SignUpClose() {
+  handleSignUpClose = () => {
     this.setState({ showModalSignup: false });
-  }
+  };
   render() {
+    const { showModalLogin, showModalSignup } = this.state;
+    const { user, onLoginUser, onRegisterUser } = this.props;
     return (
       <div>
         <button
           variant="primary"
           type="button"
           className="btn btn-primary"
-          onClick={this.LoginShow}
+          onClick={this.handleLoginShow}
         >
           Login
         </button>
 
         <Modal
-          id="logreg-forms"
-          show={this.state.showModalLogin}
-          onHide={this.LoginClose}
+          dialogClassName="logreg-forms"
+          show={showModalLogin}
+          onHide={this.handleLoginClose}
         >
           <LoginModal
-            onHide={this.LoginClose}
-            onSignUp={this.SignUpShow}
-            user={this.props.user}
-            LoginUser={this.props.LoginUser}
+            onHide={this.handleLoginClose}
+            onSignUp={this.handleSignUpShow}
+            user={user}
+            LoginUser={onLoginUser}
           />
         </Modal>
 
@@ -61,20 +54,20 @@ class ButtonLogin extends Component {
           variant="primary"
           type="button"
           className="btn btn-outline-success btn-lg ml-3"
-          onClick={this.SignUpShow}
+          onClick={this.handleSignUpShow}
         >
           Sign up
         </button>
         <Modal
-          id="logreg-forms"
-          show={this.state.showModalSignup}
-          onHide={this.SignUpClose}
+          dialogClassName="logreg-forms"
+          show={showModalSignup}
+          onHide={this.handleSignUpClose}
         >
           <SignUpModal
-            onHide={this.SignUpClose}
-            onLogin={this.LoginShow}
-            user={this.props.user}
-            RegisterUser={this.props.RegisterUser}
+            onHide={this.handleSignUpClose}
+            onLogin={this.handleLoginShow}
+            user={user}
+            RegisterUser={onRegisterUser}
           />
         </Modal>
       </div>

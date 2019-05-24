@@ -1,26 +1,23 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import config from "../../config/app.config";
 import { withRouter } from "react-router-dom";
 const linkToOAuthVk = config.serverDomain + "/auth/vkontakte";
 
-class Login extends Component {
+class LoginModal extends Component {
   state = {
-    inputEmail: "",
-    inputPassword: ""
+    email: "",
+    pass: ""
   };
-  onLogin = e => {
+  handleLogin = e => {
     e.preventDefault();
-    const { inputEmail, inputPassword } = this.state;
-    this.props.LoginUser({
-      email: inputEmail,
-      pass: inputPassword
-    });
+    const { email, pass } = this.state;
+    this.props.onLoginUser({ email, pass });
   };
-  onShowSignUp = () => {
+  handleShowSignUp = () => {
     this.props.onHide();
     this.props.onSignUp();
   };
-  onOAuthVK = e => {
+  handleOAuthVK = e => {
     window.location.href = linkToOAuthVk;
   };
   handleChange = e => {
@@ -28,18 +25,16 @@ class Login extends Component {
     this.setState({ [id]: value });
   };
   validate = () => {
-    const { inputEmail, inputPassword } = this.state;
-    if (inputEmail.trim() && inputPassword.trim()) {
-      return true;
-    }
-    return false;
+    const { email, pass } = this.state;
+    return email.trim() && pass.trim();
   };
   render() {
-    const { inputEmail, inputPassword } = this.state;
+    const { email, pass } = this.state;
+    const { onHide, user } = this.props;
     return (
-      <React.Fragment>
-        <form className="form-signin" onSubmit={this.onLogin}>
-          <button type="reset" className="close" onClick={this.props.onHide}>
+      <Fragment>
+        <form className="form-signin" onSubmit={this.handleLogin}>
+          <button type="reset" className="close" onClick={onHide}>
             <span aria-hidden="true">&times;</span>
           </button>
           <h1
@@ -52,7 +47,7 @@ class Login extends Component {
             <button
               className="btn vkontakte-btn social-btn"
               type="button"
-              onClick={this.onOAuthVK}
+              onClick={this.handleOAuthVK}
             >
               <span>
                 <i className="fab fa-vk" /> Sign in with Vkontake
@@ -65,31 +60,31 @@ class Login extends Component {
             </button>
           </div>
           <p style={{ textAlign: "center" }}> OR </p>
-          {this.props.user.errorLogin && (
+          {user.errorLogin && (
             <div
               className="alert alert-danger"
               style={{ textAlign: "center" }}
               role="alert"
             >
-              {this.props.user.errorLogin}
+              {user.errorLogin}
             </div>
           )}
           <input
             type="email"
-            id="inputEmail"
+            id="email"
             className="form-control"
             placeholder="Email address"
             onChange={this.handleChange}
-            value={inputEmail}
+            value={email}
           />
           <input
             type="password"
-            id="inputPassword"
+            id="pass"
             className="form-control"
             placeholder="Password"
             required=""
             onChange={this.handleChange}
-            value={inputPassword}
+            value={pass}
           />
           <button
             className="btn btn-success btn-block"
@@ -107,15 +102,15 @@ class Login extends Component {
             className="btn btn-primary btn-block"
             type="button"
             id="btn-signup"
-            onClick={this.onShowSignUp}
+            onClick={this.handleShowSignUp}
           >
             <i className="fas fa-user-plus" /> Sign up New Account
           </button>
         </form>
         <br />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
 
-export default withRouter(Login);
+export default withRouter(LoginModal);

@@ -1,9 +1,10 @@
+import "./style.css";
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import DropdownUser from "../DropdownUser";
 import ButtonLogin from "../ButtonLogin";
 
-const Header = ({ user, LogoutUser, LoginUser, RegisterUser }) => (
+const Header = ({ user, onLogoutUser, onLoginUser, onRegisterUser }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <Link className="navbar-brand" to="/">
       BestRateShop
@@ -26,7 +27,7 @@ const Header = ({ user, LogoutUser, LoginUser, RegisterUser }) => (
             exact
             to="/home"
             className="nav-link"
-            activeClassName="nav-link active"
+            activeClassName="active"
           >
             Home <span className="sr-only">(current)</span>
           </NavLink>
@@ -35,7 +36,7 @@ const Header = ({ user, LogoutUser, LoginUser, RegisterUser }) => (
           <NavLink
             to="/home/features"
             className="nav-link"
-            activeClassName="nav-link active"
+            activeClassName="active"
           >
             Features
           </NavLink>
@@ -44,7 +45,7 @@ const Header = ({ user, LogoutUser, LoginUser, RegisterUser }) => (
           <NavLink
             to="/home/pricing"
             className="nav-link"
-            activeClassName="nav-link active"
+            activeClassName="active"
           >
             Pricing
           </NavLink>
@@ -52,12 +53,12 @@ const Header = ({ user, LogoutUser, LoginUser, RegisterUser }) => (
       </ul>
     </div>
     {user.id ? (
-      <DropdownUser user={user} LogoutUser={LogoutUser} />
+      <DropdownUser user={user} onLogoutUser={onLogoutUser} />
     ) : (
       <ButtonLogin
         user={user}
-        LoginUser={LoginUser}
-        RegisterUser={RegisterUser}
+        onLoginUser={onLoginUser}
+        onRegisterUser={onRegisterUser}
       />
     )}
   </nav>

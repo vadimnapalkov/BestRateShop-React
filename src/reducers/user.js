@@ -14,19 +14,16 @@ const initialState = {};
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_AUTHENTICATE_SUCCESS:
-      state = action.payload;
-      return state;
+      return action.payload;
 
     case USER_AUTHENTICATE_FAIL:
-      state = action.payload;
-      return { ...state, error: "" };
+      return { ...state, error: action.payload.message };
 
     case LOGIN_REQUEST:
       return { ...state, errorLogin: "" };
 
     case LOGIN_SUCCESS:
-      state = action.payload;
-      return state;
+      return action.payload;
 
     case LOGIN_FAIL:
       return {
@@ -39,8 +36,7 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, errorRegister: "" };
 
     case REGISTER_SUCCESS:
-      state = action.payload;
-      return state;
+      return action.payload;
 
     case REGISTER_FAIL:
       return {
@@ -50,8 +46,7 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case LOGOUT_SUCCESS:
-      state = action.payload;
-      return state;
+      return action.payload;
 
     default:
       return state;

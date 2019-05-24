@@ -1,8 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { LoginUser, LogoutUser, RegisterUser } from "../../actions/UserActions";
-import { userSession } from "../../actions/UserActions";
+import {
+  LoginUser,
+  LogoutUser,
+  RegisterUser,
+  userSession
+} from "../../actions/UserActions";
 import Home from "../Home";
 import Features from "../Features";
 import Pricing from "../Pricing";
@@ -13,13 +17,14 @@ class App extends Component {
     this.props.userSession();
   }
   render() {
+    const { LogoutUser, LoginUser, RegisterUser, user } = this.props;
     return (
-      <div>
+      <Fragment>
         <Header
-          user={this.props.user}
-          LogoutUser={this.props.LogoutUser}
-          LoginUser={this.props.LoginUser}
-          RegisterUser={this.props.RegisterUser}
+          user={user}
+          onLogoutUser={LogoutUser}
+          onLoginUser={LoginUser}
+          onRegisterUser={RegisterUser}
         />
         <Switch>
           <Route exact path="/home" component={Home} />
@@ -27,16 +32,12 @@ class App extends Component {
           <Route path="/home/pricing" component={Pricing} />
           <Redirect to="/error" />
         </Switch>
-      </div>
+      </Fragment>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
-};
+const mapStateToProps = state => ({ user: state.user });
 
 const mapDispatchToProps = {
   userSession,

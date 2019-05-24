@@ -1,7 +1,8 @@
+import "./style.css";
 import React from "react";
 import { Link } from "react-router";
 
-const DropdownUser = ({ user, LogoutUser }) => (
+const DropdownUser = ({ user, onLogoutUser }) => (
   <ul className="navbar-nav navbar-right">
     <li className="dropdown">
       <button
@@ -10,7 +11,7 @@ const DropdownUser = ({ user, LogoutUser }) => (
         data-toggle="dropdown"
       >
         <i className="fas fa-user" />
-        <strong> {user.full_name}</strong>
+        <strong> {user.fullName}</strong>
       </button>
       <ul className="dropdown-menu dropdown-menu-right">
         <li>
@@ -36,7 +37,7 @@ const DropdownUser = ({ user, LogoutUser }) => (
                 <p className="text-left">
                   <button
                     className="btn btn-primary btn-block btn-sm"
-                    onClick={LogoutUser}
+                    onClick={onLogoutUser}
                   >
                     Logout
                   </button>
